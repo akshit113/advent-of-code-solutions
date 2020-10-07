@@ -1,6 +1,3 @@
-
-
-
 def get_data(fpath):
     with open(fpath, 'r') as f:
         inp = f.read()
@@ -11,17 +8,16 @@ def get_data(fpath):
 def part1(s):
     from collections import defaultdict, Counter, OrderedDict
     from datetime import datetime
-    t0 = datetime.now()
 
+    t0 = datetime.now()
     print(f'\n\nSolving Part 1')
     lines = s.splitlines()
     lines = sorted(lines)
 
     dc = defaultdict(list)
 
+    # parse input and get time range
     i = 0
-
-    s = []
     while i < len(lines):
         istr = lines[i]
         inp = istr.split()
@@ -42,15 +38,16 @@ def part1(s):
             dc[id].append(tm_count)
 
         i += 1
+
+    # find the guard id with maximum sleep time
     max_sleep = 0
-    # print(s)
     for key, value in dc.items():
         s = sum(value)
         if s > max_sleep:
             max_sleep = s
             gid = key
 
-    print(gid)
+    print(f'gid: {gid}')
     sleep = []
     wake = []
     i = 0
@@ -67,6 +64,8 @@ def part1(s):
 
     cnt_array = []
     rng = list(range(0, len(sleep)))
+
+    # populate minute array from sleep and wake up times
     for i in rng:
         # print(i)
         sl = int(sleep[i][15:len(sleep) - 2])
@@ -78,6 +77,8 @@ def part1(s):
     dc = Counter(cnt_array)
     new = OrderedDict((dc.items()))
     max_occurence = -999999999
+
+    # find minute when guard sleeps the most
     for key, value in new.items():
         if value > max_occurence:
             max_occurence = value
@@ -86,7 +87,7 @@ def part1(s):
     final_answer = int(gid[1:]) * minute
     print(f'final answer is {final_answer}')
     t1 = datetime.now()
-    t = int((t1 - t0).microseconds/1000)
+    t = int((t1 - t0).microseconds / 1000)
     print(f'Execution time: {t}ms')
 
 
