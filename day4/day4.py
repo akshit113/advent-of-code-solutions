@@ -25,12 +25,12 @@ def part1(s):
         if 'Guard' in inp:
             id = inp[3]
 
-        if 'falls' in inp:
+        elif 'falls' in inp:
             ts = inp[0] + " " + inp[1]
             ts = ts[1:len(ts) - 1]
             tm = datetime.strptime(ts, "%Y-%m-%d %H:%M")
 
-        if 'wakes' in istr:
+        elif 'wakes' in istr:
             ts = inp[0] + " " + inp[1]
             ts = ts[1:len(ts) - 1]
             end_time = datetime.strptime(ts, "%Y-%m-%d %H:%M")
@@ -88,7 +88,7 @@ def part1(s):
     print(f'final answer is {final_answer}')
     t1 = datetime.now()
     t = int((t1 - t0).microseconds / 1000)
-    print(f'Execution time: {t}ms')
+    print(f'Execution time: {t}ms')  # 30ms
 
 
 def part2(s):
@@ -144,7 +144,7 @@ def part2(s):
     print(f'final answer is, gid X minute = {final_answer}')
     t1 = datetime.now()
     t = int((t1 - t0).microseconds / 1000)
-    print(f'Execution time: {t}ms')
+    print(f'Execution time: {t}ms')  # 5ms
 
 
 def main():
