@@ -85,10 +85,16 @@ def part1(s):
     print(f'max_occurence: {max_occurence}, minute: {minute}')
     final_answer = int(gid[1:]) * minute
     print(f'final answer is {final_answer}')
+    t1 = datetime.now()
+    t = int((t1 - t0).microseconds/1000)
+    print(f'Execution time: {t}ms')
 
 
 def part2(s):
     from collections import defaultdict, Counter
+    from datetime import datetime
+
+    t0 = datetime.now()
     print('\n\nSolving part 2...')
     lines = s.splitlines()
     lines = sorted(lines)
@@ -135,6 +141,9 @@ def part2(s):
     final_answer = gid * minute
     print(f'gid:{gid}, minute:{minute}, times:{max_t}')
     print(f'final answer is, gid X minute = {final_answer}')
+    t1 = datetime.now()
+    t = int((t1 - t0).microseconds / 1000)
+    print(f'Execution time: {t}ms')
 
 
 def main():
