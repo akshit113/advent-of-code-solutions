@@ -27,7 +27,6 @@ def part1(s):
                 if s[idx].lower() == s[idx + 1].lower():
                     flg = s[idx].islower() != s[idx + 1].islower()
                     if flg:
-                    if flg:
                         # print(s)
                         rep = s[idx:idx + 2]
                         s = s.replace(rep, '')
